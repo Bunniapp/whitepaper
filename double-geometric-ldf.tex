@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{references.bib}
+\usepackage{titlesec}
+\titleformat{\subsection}[hang]{\normalfont\bfseries}{\thesubsection}{1em}{}
+\usepackage{abstract}
+\usepackage[labelformat=empty]{caption}
+
+\begin{document}
+\pagenumbering{gobble}
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      xlabel={$x$},
+      ylabel={$d(x)$},
+      xmin=-10.5, xmax=9.5,
+      ymin=0, ymax=0.2,
+      xtick={-10,-8,-6,-4,-2,0,2,4,6,8,10},
+      ytick={0,0.1,0.2},
+      grid=major,
+      width=\columnwidth,
+      height=0.6\columnwidth,
+      tick label style={font=\footnotesize},
+      label style={font=\footnotesize},
+      legend style={font=\footnotesize},
+    ]
+    
+    \addplot[domain=-10:-1, samples=10, color=blue, mark=*]{0.5 * 0.8^(-(x+1)) / ((1 - 0.8^10) / (1 - 0.8))};
+    \addplot[domain=0:9, samples=10, color=blue, mark=*]{0.5 * 0.8^x) / ((1 - 0.8^10) / (1 - 0.8))};
+
+    \addplot[domain=-10:-1, samples=10, color=red, mark=*]{0.5 * 1.1^(-(x+1)) / ((1 - 1.1^10) / (1 - 1.1))};
+    \addplot[domain=0:9, samples=10, color=red, mark=*]{0.5 * 1.4^x / ((1 - 1.4^10) / (1 - 1.4))};
+    
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Double geometric LDFs, symmetric concentrated and asymmetric bid-ask}
+  \label{fig:double_geometric_ldf}
+\end{figure}
+
+\end{document}
