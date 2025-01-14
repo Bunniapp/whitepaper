@@ -249,7 +249,7 @@ Cumulative amount functions are essential to computing liquidity modifications a
 Each LDF also has two associated \textit{inverse cumulative amount functions} (ICAFs) $A_0^{-1}(\cdot)$ and $A_1^{-1}(\cdot)$. As the name suggests, they are related to the inverse functions of CAFs $A_0(\cdot)$ and $A_1(\cdot)$. However, simply using the inverse functions of CAFs is not enough for our purposes, since they only accept specific cumulative amounts that have corresponding rick indices as input, whereas we need to map all possible cumulative amounts to rick indices somehow.  The inverse functions also might not exist if the CAFs are not strictly monotonic. Thus, we define the ICAFs in the following way:
 
 \begin{align}
-A_0^{-1}(y) &= \mathrm{argmin}_{r \in R \cup \{r_{max} + w\}} \{A_0(r) : A_0(r) \leq y\} \\
+A_0^{-1}(y) &= \mathrm{argmax}_{r \in R \cup \{r_{max} + w\}} \{A_0(r) : A_0(r) \geq y\} \\
 A_1^{-1}(y) &= \mathrm{argmin}_{r \in R \cup \{r_{min} - w\}} \{A_1(r) : A_1(r) \geq y\}
 \end{align}
 
